@@ -1,11 +1,11 @@
 ﻿using System;
+using QuizApp.Contracts;
+
 namespace QuizApp.DTO
 {
-    public class CategoryDTO
+    public class CategoryDTO : BaseEntity
     {
-        public CategoryDTO()
-        {
-        }
+       public string Name { get; set; }
     }
 }
 
