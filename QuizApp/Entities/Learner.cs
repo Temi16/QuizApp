@@ -1,8 +1,9 @@
-﻿namespace QuizApp.Entities
+﻿using QuizApp.Contracts;
+
+namespace QuizApp.Entities
 {
-    public class Learner
+    public class Learner : AuditableEntity
     {
-        public int Id { get; set; }
         public int UserId { get; set; }
     }
 }
