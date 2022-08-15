@@ -1,4 +1,8 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore;
+using QuizApp.Entities;
+using QuizApp.Entities.Identity;
+
 namespace QuizApp.Contexts
 {
     public class ApplicationContext : DbContext

@@ -3,9 +3,10 @@ using QuizApp.Contracts;
 
 namespace QuizApp.DTO
 {
-    public class CategoryDTO : BaseEntity
+    public class CategoryDTO
     {
-       public string Name { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }
 
