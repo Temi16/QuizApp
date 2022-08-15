@@ -20,5 +20,6 @@
   <ItemGroup>
     <Folder Include="DTO\ResponseModel\" />
     <Folder Include="DTO\RequestModel\" />
+    <Folder Include="Interface\IService\" />
   </ItemGroup>
 </Project>
