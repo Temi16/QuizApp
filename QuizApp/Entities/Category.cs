@@ -1,11 +1,11 @@
 ﻿using System;
+using QuizApp.Contracts;
+
 namespace QuizApp.Entities
 {
-    public class Category
+    public class Category : BaseEntity
     {
-        public Category()
-        {
-        }
+       public string Name { get; set; }
     }
 }
 
