@@ -1,6 +1,9 @@
-﻿namespace QuizApp.Entities
+﻿using QuizApp.Contracts;
+
+namespace QuizApp.Entities
 {
-    public class Admin
+    public class Admin : AuditableEntity
     {
+        public int UserId { get; set; }
     }
 }
