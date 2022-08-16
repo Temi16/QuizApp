@@ -16,5 +16,6 @@ namespace QuizApp.Interface
         public Task<AdminDTO> GetAdminById(int id, CancellationToken cancellationToken);
 
 
+        
     }
 }
