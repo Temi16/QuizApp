@@ -17,7 +17,7 @@ namespace QuizApp.Implementations.Identity
         public async Task<ICollection<User>> GetAllUserAsync(CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
-            var users = await _context.Users.Include(op => op.UserRole).ToListAsync(cancellationToken);
+            var users = await _context.Users.Include(x =>x.UserRole).ToListAsync(cancellationToken);
             return users;
 
         }
