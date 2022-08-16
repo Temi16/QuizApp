@@ -42,7 +42,7 @@ namespace QuizApp.Implementations
             {
                 throw new ArgumentNullException();
             }
-            var admin = await _context.Admins.SingleOrDefaultAsync(ad => ad.Id == id, cancellationToken);
+            var admin = await _context.Admins.Include(ad => ad.User).SingleOrDefaultAsync(ad => ad.Id == id, cancellationToken);
             if(admin == null)
             {
                 throw new ArgumentNullException();
@@ -61,7 +61,7 @@ namespace QuizApp.Implementations
         public async Task<IList<AdminDTO>> GetAllAdmin(CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
-            var admins = await _context.Admins/*.Include(ad => ad.User)*/.ToListAsync(cancellationToken);
+            var admins = await _context.Admins.Include(ad => ad.User).ToListAsync(cancellationToken);
             return admins.Select(admin => new AdminDTO
             {
                 FirstName = admin.User.FirstName,
