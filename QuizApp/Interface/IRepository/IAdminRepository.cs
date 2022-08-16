@@ -1,16 +1,19 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using QuizApp.DTO;
+using QuizApp.Entities;
 
 namespace QuizApp.Interface
 {
     public interface IAdminRepository
     {
-        public Task<AdminDTO> CraeteAdmin();
-        public Task<AdminDTO> UpdateAdmin();
-        public Task<AdminDTO> DeleteAdmin();
-        public Task<IList<AdminDTO>> GetAllAdmin();
-        public Task<AdminDTO> GetAdminById(int id);
+        public Task<IdentityResult> CraeteAdmin(Admin admin, CancellationToken cancellationToken);
+        public Task<IdentityResult> UpdateAdmin(Admin admin, CancellationToken cancellationToken);
+        public Task<IdentityResult> DeleteAdmin(Admin admin, CancellationToken cancellationToken);
+        public Task<IList<AdminDTO>> GetAllAdmin(CancellationToken cancellationToken);
+        public Task<AdminDTO> GetAdminById(int id, CancellationToken cancellationToken);
 
 
     }
