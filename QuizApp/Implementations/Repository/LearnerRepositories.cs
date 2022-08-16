@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 public class LearnerRepositories : ILearnerRepository
 {
@@ -13,30 +14,30 @@ public class LearnerRepositories : ILearnerRepository
         _context = context;
     }
 
-    public async Task<bool> CreateLearner(Learner learner)
+    public async Task<bool> CreateLearnerAsync(Learner learner)
     {
         await _context.Learners.AddAsync(learner);
         await _context.SaveChangesAsync();
         return true;
     }
 
-    public async Task<bool> EditLearner(Learner learner)
+    public async Task<bool> EditLearnerAsync(Learner learner)
     {
 
-       await _context.Learners.UpdateAsync(learner);
+        _context.Learners.Update(learner);
        await _context.SaveChangesAsync();
         return true;
     }
   
-    public  async Task<Learner> GetLearner(int id)
+    public  async Task<Learner> GetLearnerAsync(int id)
     {
-        var learner = await _context.Learners.Find(id);
+        var learner = await _context.Learners.FindAsync(id);
         return learner;
     }
 
-    public async Task<IList<Learner>> GetLearners()
+    public async Task<ICollection<Learner>> GetLearnersAsync()
     {
-        var learners = await _context.Learners.ToList();
+        var learners = await _context.Learners.Include(x => x.User).ToListAsync();
         return learners;
     }
 }
