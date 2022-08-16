@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using QuizApp.Contexts;
 using QuizApp.Entities.Identity;
 using QuizApp.Interface.Identity;
@@ -17,7 +18,7 @@ namespace QuizApp.Implementations.Identity
         public async Task<ICollection<User>> GetAllUserAsync(CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
-            var users = await _context.Users.Include(x =>x.UserRole).ToListAsync(cancellationToken);
+            var users = await _context.Users.Include(u => u.Id).ToListAsync();
             return users;
 
         }
