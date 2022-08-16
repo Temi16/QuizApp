@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using QuizApp.Contexts;
 using QuizApp.Entities.Identity;
 using QuizApp.Interface.Identity;
+using System;
+
 namespace QuizApp.Implementations.Identity
 {
     public class UserRepository:IUserRepository
@@ -15,13 +17,16 @@ namespace QuizApp.Implementations.Identity
         {
             _context = context;
         }
-        public async Task<ICollection<User>> GetAllUserAsync(CancellationToken cancellationToken)
+        public async Task<ICollection<User>> GetAllUsersAsync(CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
             var users = await _context.Users.Include(u => u.Id).ToListAsync();
             return users;
 
         }
+
+       
+
         public async Task<User> GetUserAsync(int id,CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -29,12 +34,15 @@ namespace QuizApp.Implementations.Identity
             {
                 throw new ArgumentNullException();
             }
-            var user= _context.Users.FirstOrDefault(op => op.Id == id,cancellationToken);
+            var user = await _context.Users.FirstOrDefaultAsync(op => op.Id == id,cancellationToken);
             if (user == null)
             {
                 return null;
             }
+            return user;
             
         }
+
+     
     }
 }
