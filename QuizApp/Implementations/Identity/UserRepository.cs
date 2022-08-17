@@ -7,6 +7,7 @@ using QuizApp.Contexts;
 using QuizApp.Entities.Identity;
 using QuizApp.Interface.Identity;
 using System;
+using Microsoft.AspNetCore.Identity;
 
 namespace QuizApp.Implementations.Identity
 {
@@ -42,7 +43,15 @@ namespace QuizApp.Implementations.Identity
             return user;
             
         }
+        public async Task<User> AddUser(User user, CancellationToken cancellationToken)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            await _context.Users.AddAsync(user, cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken);
+            return user;
+            
+        }
 
-     
+
     }
 }

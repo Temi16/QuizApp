@@ -27,9 +27,10 @@ namespace QuizApp.Implementations
             return IdentityResult.Success;
         }
 
-        public async Task<IdentityResult> DeleteAdmin(Admin admin, CancellationToken cancellationToken)
+        public async Task<IdentityResult> DeleteAdmin(int id, CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
+            var admin = await _context.Admins.FindAsync(id);
             _context.Admins.Remove(admin);
             await _context.SaveChangesAsync(cancellationToken);
             return IdentityResult.Success;
