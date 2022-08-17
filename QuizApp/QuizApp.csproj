@@ -17,4 +17,7 @@
   <ItemGroup>
     <None Remove="DTO\" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DTO\ResponseModel\" />
+  </ItemGroup>
 </Project>
