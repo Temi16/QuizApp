@@ -71,15 +71,10 @@ namespace QuizApp.Implementations.Repository
             }).ToList();
         }
 
-        public async Task<OptionDTO> GetByExpressionAsync(Expression<Func<Option, bool>> expression)
+        public async Task<Option> GetByExpressionAsync(Expression<Func<Option, bool>> expression)
         {
             var result = await _context.Options.FirstOrDefaultAsync(expression);
-            return new OptionDTO
-            {
-                Id = result.Id,
-                Description = result.Description,
-                Label = result.Label,
-            };
+            return result;
         }
 
 

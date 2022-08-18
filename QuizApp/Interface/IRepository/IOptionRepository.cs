@@ -20,6 +20,6 @@ namespace QuizApp.Interface.IRepository
 
         Task<IdentityResult> DeleteOptionAsync(Option option, CancellationToken cancellationToken);
 
-        Task<OptionDTO> GetByExpressionAsync(Expression<Func<Option, bool>> expression);
+        Task<Option> GetByExpressionAsync(Expression<Func<Option, bool>> expression);
     }
 }
