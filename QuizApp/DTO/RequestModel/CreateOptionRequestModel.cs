@@ -1,10 +1,8 @@
-﻿namespace QuizApp.DTO
+﻿namespace QuizApp.DTO.RequestModel
 {
-    public class QuestionDTO
+    public class CreateOptionRequestModel
     {
-        public int Id { get; set; }
         public string Description { get; set; }
         public string Label { get; set; }
-        
     }
 }

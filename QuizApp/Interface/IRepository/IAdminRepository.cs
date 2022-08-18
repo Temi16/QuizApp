@@ -11,7 +11,7 @@ namespace QuizApp.Interface
     {
         public Task<IdentityResult> CraeteAdmin(Admin admin, CancellationToken cancellationToken);
         public Task<IdentityResult> UpdateAdmin(Admin admin, CancellationToken cancellationToken);
-        public Task<IdentityResult> DeleteAdmin(Admin admin, CancellationToken cancellationToken);
+        public Task<IdentityResult> DeleteAdmin(int id, CancellationToken cancellationToken);
         public Task<IList<AdminDTO>> GetAllAdmin(CancellationToken cancellationToken);
         public Task<AdminDTO> GetAdminById(int id, CancellationToken cancellationToken);
 
